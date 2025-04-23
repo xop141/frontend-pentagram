@@ -7,6 +7,11 @@ import { SuggestionsSidebar } from "@/components/ui/suggested-sidebar";
 export default function FeedPage() {
   return (
 
+    <div>
+
+    </div>
+
+
     <div className="flex justify-center bg-black min-h-screen px-4 lg:px-8">
       <div className="w-full max-w-[630px]">
         <StoriesBar />
@@ -25,5 +30,6 @@ export default function FeedPage() {
 
 
    
+
   );
 }
