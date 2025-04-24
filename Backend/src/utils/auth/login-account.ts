@@ -36,6 +36,7 @@ const loginAccount = async (
     );
 
     res.status(200).send({ message: "Login successful" , token});
+
   } catch (error) {
     next(error);
   }

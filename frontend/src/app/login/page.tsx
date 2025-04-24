@@ -15,15 +15,15 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { parseJwt } from "../../utils/JwtParse";
 import { useRouter } from "next/navigation";
+
 import {API} from "../../utils/api"
 
 import { useEffect } from "react";
 
 
-
-
 const Page = () => {
   const router = useRouter();
+
 
 
  useEffect(() => {
@@ -33,7 +33,6 @@ const Page = () => {
    }
  }, []);
 
-
   const formik = useFormik({
     initialValues: {
       login: "",
@@ -42,6 +41,7 @@ const Page = () => {
     validationSchema: loginSchema,
     onSubmit: async (values) => {
       try {
+
         const res = await axios.post(
           API + "/api/auth/login",
 
