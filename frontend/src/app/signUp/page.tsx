@@ -27,7 +27,9 @@ const Page = () => {
     validationSchema: signSchema,
     onSubmit: async (values) => {
       const sendUser =async()=>{
+
        const res = await axios.post( API+'/api/auth/register', values)
+
        
         const notify = () => toast(res.data.message);
         setResp(res.data.message)
