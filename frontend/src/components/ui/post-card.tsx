@@ -201,6 +201,9 @@ export function PostCard({
     friend.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const CLOUDINARY_BASE = process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL;
+
+
   return (
     <div className="rounded-md bg-white dark:bg-black max-w-md mx-auto my-6 relative">
       {/* SHARE MODAL */}
