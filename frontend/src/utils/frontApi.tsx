@@ -1,0 +1,1 @@
+export const FRONTLINK = 'http://localhost:3000'

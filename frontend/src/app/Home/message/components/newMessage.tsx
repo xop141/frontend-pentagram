@@ -11,8 +11,8 @@ import { UserList } from '../components/userList';
 type User = {
   username: string;
   _id: string;
+  avatarImage: string; 
 };
-
 export const NewMessageDialog = () => {
   const [searchValue, setSearchValue] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');
@@ -75,7 +75,6 @@ export const NewMessageDialog = () => {
       router.push(`/Home/actualRoom/${res.data.roomId}`);
     }
   };
-
   return (
     <Dialog>
       <DialogTrigger>

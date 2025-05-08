@@ -4,6 +4,7 @@ import { Check } from 'lucide-react';
 type User = {
   username: string;
   _id: string;
+  avatarImage: string; 
 };
 
 type Props = {
@@ -23,7 +24,14 @@ export const UserList = ({ users, selectedUsers, onSelect }: Props) => {
             className={`p-2 border rounded-lg hover:bg-white/30 flex justify-between items-center cursor-pointer ${isSelected ? 'bg-white/20' : ''}`}
             onClick={() => onSelect(user.username, user._id)}
           >
-            <span className="text-white">{user.username}</span>
+            <div className="flex items-center gap-3">
+              <img
+                src={user.avatarImage}
+                alt={`${user.username}'s avatar`}
+                className="w-8 h-8 rounded-full object-cover"
+              />
+              <span className="text-white">{user.username}</span>
+            </div>
             {isSelected ? (
               <div className="border w-[20px] h-[20px] rounded-full border-white flex items-center justify-center bg-white">
                 <Check className="text-black w-[14px] h-[14px]" />

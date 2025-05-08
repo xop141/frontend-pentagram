@@ -6,11 +6,11 @@ import NotificationButtonPanel from "./_components/NotificationButtonPanel";
 import MesageButtonPanel from "./_components/MessageButtonPanel";
 import SearchButtonPanel from "./_components/SearchButtonPanel";
 import AppSidebarMenu from "./_components/AppSidebarMenu";
-
-
+import { useRouter } from "next/navigation";
+import { FRONTLINK } from "@/utils/frontApi";
 
 export function AppSidebar() {
-
+const router = useRouter()
   const [username, setUsername] = useState<string | null>(null);
   const [activePanel, setActivePanel] = useState<
     "none" | "search" | "messages" | "notifications"
@@ -41,7 +41,9 @@ export function AppSidebar() {
   const togglePanel = (panel: "search" | "messages" | "notifications") => {
     setActivePanel((prev) => (prev === panel ? "none" : panel));
   };
-
+if (activePanel === 'messages') {
+  router.push(FRONTLINK+'/Home/message#')
+}
   return (
     <div className="flex h-screen z-40 ">
       <AppSidebarMenu
@@ -50,8 +52,8 @@ export function AppSidebar() {
         username={username}
         setIsCreateOpen={setIsCreateOpen}
       />
-      <SearchButtonPanel activePanel={activePanel} />
-      <MesageButtonPanel activePanel={activePanel} />
+      <SearchButtonPanel activePanel={activePanel}/>
+      <MesageButtonPanel activePanel={activePanel}/>
       <NotificationButtonPanel activePanel={activePanel} />
       <CreatePostDialog open={isCreateOpen} onOpenChange={setIsCreateOpen} />
     </div>
