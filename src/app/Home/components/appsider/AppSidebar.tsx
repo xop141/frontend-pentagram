@@ -42,7 +42,7 @@ const router = useRouter()
     setActivePanel((prev) => (prev === panel ? "none" : panel));
   };
 if (activePanel === 'messages') {
-  router.push('https://pentagram-i97c.onrender.com/Home/message#')
+  router.push('https://pentagram-i97c.onrender.com/Home/message')
 }
   return (
     <div className="flex h-screen z-40 ">
