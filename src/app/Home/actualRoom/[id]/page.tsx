@@ -17,7 +17,7 @@ const Page = () => {
   const [currentId, setCurrentId] = useState<string | null>(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [prevMessage, setPrevMessage] = useState<any[]>([]);
-
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const params = useParams();
   const context = useContext(userContext);
   const roomId = params.id;
@@ -49,6 +49,8 @@ const Page = () => {
     });
     socket.on("fromServer", (data) => {
       setReceived((prevMsgs) => [...prevMsgs, data]);
+      playMusic();
+
     });
     return () => {
       socket.disconnect();
@@ -70,9 +72,14 @@ const Page = () => {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       sendChat();
-    }
-  };
-
+    }}
+  const playMusic = () => {
+    if (audioRef.current) {
+    audioRef.current.currentTime = 0;
+    audioRef.current.play().catch((error) => {
+    console.error("Audio play error:", error);
+    })
+  }}
   return (
     <div className="bg-black w-full h-[100vh] text-white flex flex-col justify-between relative">
       <RoomHeader />
@@ -129,8 +136,8 @@ const Page = () => {
           className="w-full outline-none text-white bg-transparent"
         />
       </div>
+      <audio ref={audioRef} src="/chatNotify.mp3" />
     </div>
   );
 };
-
 export default Page;
